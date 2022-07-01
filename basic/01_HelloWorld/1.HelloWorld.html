@@ -1,0 +1,25 @@
+
+    <html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>01_HelloWorld</title>
+    </head>
+
+    <body>
+
+        <div id="test"></div>
+
+        <script src="../../access/js/babel.min.js"> </script>
+        <script src="../../access/js/react-dom.development.js"> </script>
+        <script src="../../access/js/react.development.js"> </script>
+
+        <script>
+            // 1. 创建虚拟DOM元素对象
+            var vDom = <h1>HelloWorld<h1>;
+            // 2. 将虚拟dom渲染到真实DOM中
+            ReactDOM.render(vDom, document.getElementById('test'))
+        </script>
+    </body>
+
+    </html>
