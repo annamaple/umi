@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05_React定义组件</title>
+    <!--引入React核心库-->
+    <script src="../../access/js/react.development.js"></script>
+    <!--引入React-dom， 用于支出react操作DOM-->
+    <script src="../../access/js/react-dom.development.js"></script>
+    <!--引入babel，用于将jsx转为js-->
+    <script src="../../access/js/babel.min.js"></script>
+    <style>
+        .title {
+            background-color: darkorange;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+
+<!--准备好一个容器-->
+<div id="test"></div>
+
+<script type="text/babel">
+    // 1. 创建函数式组件
+    function MyComponent(i, d) {
+
+
+
+        // 此处的this是undefined, 因为babel编译后的代码机上了'use strict'
+        console.log(this)
+        return <h2>"我是用函数定义的组件(适用于【简单组件】的定义)"</h2>
+
+    }
+
+    // 2. 渲染组件到页面
+    ReactDOM.render(<MyComponent/>, document.getElementById('test'));
+
+    /**
+     * 执行了ReactDOM.render(<MyComponent/>....之后发生了什么？
+     * 1. React解析组件标签，找到MyComponent组件
+     * 2. 发现组件是使用函数定义的，随后调用该函数，将返回的虚拟DOM转为正式DOM，随后呈现在页面中。
+     */
+</script>
+</body>
+</html>
