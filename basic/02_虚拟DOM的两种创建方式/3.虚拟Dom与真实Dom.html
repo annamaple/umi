@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2.使用js创建DOM.html</title>
+</head>
+<body>
+<!-- 准备好一个容器 -->
+<div id="test"></div>
+
+<!--引入React核心库-->
+<script src="../../js/react.development.js"></script>
+<!--引入React-DOM， 用于支出React操作Dom-->
+<script src="../../js/react-dom.development.js"></script>
+<!--引入babel-->
+<script src="../../js/babel.min.js"></script>
+<!--引入Babel用于将jsx转为js-->
+<script type="text/babel">
+    // 1. 创建虚拟dom
+    // 标签名、标签属性、标签内容
+    const vDom = (
+        <h1>
+            <span>Hello, React</span>
+        </h1>
+    )
+    // 2. 渲染虚拟dom到页面
+    ReactDOM.render(vDom, document.getElementById('test'))
+    console.log("虚拟Dom: " + vDom)
+    let rDom = document.getElementById('test');
+    debugger
+
+    /**
+     * 关于虚拟Dom:
+     * 1. 本质是Object类型的对象
+     * 2. 虚拟Dom比较轻(属性字段少)，真实Dom比较重(属性字段较多)，
+     * 3. 虚拟dom会被react转化为真实dom
+     */
+</script>
+</body>
+</html>
