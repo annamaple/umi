@@ -45,7 +45,13 @@
     // 2. 渲染组件到页面
     ReactDOM.render(<Person name='alice1' sex='女' age='20'/>, document.getElementById('test1'));
     ReactDOM.render(<Person name='alice2' sex='女' age='21'/>, document.getElementById('test2'));
-    ReactDOM.render(<Person name='alice3' sex='女' age='22'/>, document.getElementById('test3'));
+
+    const p = {name: 'alice...', sex: '女', age: 12}
+    // 展开表达式不能展开一个对象, 但写在babel中的代码可以, 但也仅限写在标签中。 下行输出为空
+    console.log(...p)
+    // ReactDOM.render(<Person name='alice3' sex='女' age='22'/>, document.getElementById('test3'));
+    // 关于展开运算符
+    ReactDOM.render(<Person {...p}/>, document.getElementById('test3'));
 
 
 </script>
