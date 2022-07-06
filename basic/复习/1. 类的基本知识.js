@@ -34,6 +34,8 @@ class SinglePerson extends Person {
         return new SinglePerson("single", 11);
     }
 
+    // 类中可以直接写赋值语句， 付下代码的含义是给SinglePerson添加值固定一个属性
+    a = 1
     constructor(name, age) {
         super(name, age)
     }
