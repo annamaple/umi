@@ -29,7 +29,6 @@
             // 初始化状态
             this.state = {
                 isHot: false,
-
             }
         }
 
@@ -37,13 +36,21 @@
             console.log(this)
             const {isHot} = this.state
             return (
-                <h1>今天天气很{isHot ? '炎热' : '凉爽'}</h1>
+                <h1 onClick={this.changeWeather}>今天天气很{isHot ? '炎热' : '凉爽'}</h1>
             )
+        }
+
+        changeWeather() {
+            // changeWeather放在那儿？——Weather的原型对象上，供实例使用
+            // 由于changeWeather是作为onClick的回调，所以不是通过实例调用的，是直接调用
+            // 内中的方法默认开启了局部的严格模式，所以changeWeather中的this为undefined
+            console.log(this)
         }
     }
 
     // 2. 渲染组件到页面
     ReactDOM.render(<Weather/>, document.getElementById('test'));
+
 
 </script>
 </body>
