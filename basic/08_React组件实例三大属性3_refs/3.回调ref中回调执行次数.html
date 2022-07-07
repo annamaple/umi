@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2.回调函数ref.html</title>
+    <!--引入React核心库 React-->
+    <script src="../../access/js/react.development.js"></script>
+    <!--引入React-dom， 用于支出react操作DOM ReactDOM-->
+    <script src="../../access/js/react-dom.development.js"></script>
+    <!--引入babel，用于将jsx转为js-->
+    <script src="../../access/js/babel.min.js"></script>
+    <!--引入prop-types, 用于对组件标签进行限制 PropTypes-->
+    <script src="../../access/js/prop-types.js"></script>
+    <style>
+        .title {
+            background-color: darkorange;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+
+<!--准备好一个容器-->
+<div id="test1"></div>
+<div id="test2"></div>
+<div id="test3"></div>
+
+<script type="text/babel">
+    class Demo extends React.Component {
+
+        state = {isHot: true}
+
+        // 展示左侧输入框数据
+        showData = () => {
+            const {input1} = this;
+            alert(input1.value);
+        }
+
+        changeWeather = () => {
+            let isHot = !this.state.isHot;
+            this.setState({isHot}, null);
+        }
+
+        // 不会调用两次
+        saveCurrentNode = (currentNode) => {
+            this.input1 = currentNode
+            console.log('@', currentNode)
+        }
+
+        render() {
+            const {isHot} = this.state;
+            return (
+                <div>
+                    <h2>今天天气很{isHot ? '炎热' : '凉爽'}</h2>
+                    <label>
+                        {/* 直接写内联函数会调用两次，但无关影响
+                        <input ref={(currentNode) => {
+                            this.input1 = currentNode;
+                            console.log('@', currentNode)
+                        }} type="text" placeholder='点击按钮提示数据'/>*/}
+                        <input ref={this.saveCurrentNode} type="text" placeholder='点击按钮提示数据'/>
+                    </label>
+                    <button onClick={this.showData}>点我提示左侧数据</button>
+                    <button onClick={this.changeWeather}>点我切换天气</button>
+                </div>
+            )
+        }
+    }
+
+    // 2. 渲染组件到页面
+    ReactDOM.render(<Demo/>, document.getElementById('test1'));
+</script>
+</body>
+</html>
