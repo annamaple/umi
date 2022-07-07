@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1.props基本使用</title>
+    <!--引入React核心库 React-->
+    <script src="../../access/js/react.development.js"></script>
+    <!--引入React-dom， 用于支出react操作DOM ReactDOM-->
+    <script src="../../access/js/react-dom.development.js"></script>
+    <!--引入babel，用于将jsx转为js-->
+    <script src="../../access/js/babel.min.js"></script>
+    <!--引入prop-types, 用于对组件标签进行限制 PropTypes-->
+    <script src="../../access/js/prop-types.js"></script>
+    <style>
+        .title {
+            background-color: darkorange;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+
+<!--准备好一个容器-->
+<div id="test1"></div>
+<div id="test2"></div>
+<div id="test3"></div>
+
+<script type="text/babel">
+    // 1. 类方式创建组件
+    class Person extends React.Component {
+
+        // 对标签属性进行类型、必要性的限制
+        static propTypes = {
+            name: PropTypes.string.isRequired,
+            age: PropTypes.number,
+            sex: PropTypes.string,
+            speak: PropTypes.func,
+        }
+
+        // 指定标签属性默认值
+        static defaultProps = {
+            sex: 'unknown',
+            age: 19,
+        }
+
+        render() {
+            console.log(this)
+            // 解构赋值
+            const {name, sex, age} = this.props;
+            // props是只读的 下行代码会报错
+            // this.props.name = 'jack'
+            return (
+                <ul>
+                    <li>姓名:{name}</li>
+                    <li>性别:{sex}</li>
+                    <li>年龄:{age}</li>
+                </ul>
+            )
+        }
+
+        state = {}
+
+    }
+
+
+    // 2. 渲染组件到页面
+    ReactDOM.render(<Person name="alice1" sex='女' age={20} spkak={speak}/>, document.getElementById('test1'));
+    ReactDOM.render(<Person name='alice2' sex='女' age={21}/>, document.getElementById('test2'));
+
+    const p = {name: 'alice...', sex: '女', age: 12}
+    // 展开表达式不能展开一个对象, 但写在babel中的代码可以, 但也仅限写在标签中。 下行输出为空
+    console.log(...p)
+    // ReactDOM.render(<Person name='alice3' sex='女' age='22'/>, document.getElementById('test3'));
+    // 关于展开运算符
+    ReactDOM.render(<Person {...p}/>, document.getElementById('test3'));
+
+
+    function speak() {
+        console.log("speak");
+    }
+</script>
+</body>
+</html>
