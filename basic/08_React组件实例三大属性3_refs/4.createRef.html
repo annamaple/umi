@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>createRef</title>
+    <!--引入React核心库 React-->
+    <script src="../../access/js/react.development.js"></script>
+    <!--引入React-dom， 用于支出react操作DOM ReactDOM-->
+    <script src="../../access/js/react-dom.development.js"></script>
+    <!--引入babel，用于将jsx转为js-->
+    <script src="../../access/js/babel.min.js"></script>
+    <!--引入prop-types, 用于对组件标签进行限制 PropTypes-->
+    <script src="../../access/js/prop-types.js"></script>
+    <style>
+        .title {
+            background-color: darkorange;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+
+<!--准备好一个容器-->
+<div id="test1"></div>
+
+<script type="text/babel">
+    class Demo extends React.Component {
+
+        /**
+         * React.createRef()调用后可以返回一个容器，该容器可以存储ref所表示的节点, 该容器是专人专用
+         */
+        myRef = React.createRef();
+        showData = () => {
+            // console.log(this.myRef);
+            alert(this.myRef.current.value)
+        }
+
+        myRef2 = React.createRef();
+        showData2 = () => {
+            // console.log(this.myRef2);
+            alert(this.myRef2.current.value)
+        }
+
+        render() {
+            return (
+                <div>
+                    <label>
+                        <input ref={this.myRef} type="text" placeholder='点击按钮提示数据'/>
+                    </label>
+                    <button onClick={this.showData}>点我提示左侧数据</button>
+                    <label>
+                        <input ref={this.myRef2} onBlur={this.showData2} type="text" placeholder='失去焦点提示数据'/>
+                    </label>
+                </div>
+            )
+        }
+    }
+
+    // 2. 渲染组件到页面
+    ReactDOM.render(<Demo/>, document.getElementById('test1'));
+</script>
+</body>
+</html>
