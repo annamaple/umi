@@ -34,8 +34,11 @@ class SinglePerson extends Person {
         return new SinglePerson("single", 11);
     }
 
-    // 类中可以直接写赋值语句， 付下代码的含义是给SinglePerson添加值固定一个属性
+    // 类中可以直接写赋值语句， 付下代码的含义是给SinglePerson实例对象添加值固定一个属性
     a = 1
+
+    // 给SinglePerson加上静态值
+    static staticValue = 100
     constructor(name, age) {
         super(name, age)
     }
@@ -66,3 +69,4 @@ console.log(single)
  *  2. 如果A类extends B类，且A类中写了构造器，那么A类构造器中的super是必须要写的。
  *  3. 类中所定义的方法，都是放在了类的原型对象上， 供实例区调用。
  */
+
