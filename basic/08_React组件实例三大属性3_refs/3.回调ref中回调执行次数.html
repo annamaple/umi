@@ -41,7 +41,7 @@
             this.setState({isHot}, null);
         }
 
-        // 不会调用两次
+        // 类绑定方式, 不会调用两次
         saveCurrentNode = (currentNode) => {
             this.input1 = currentNode
             console.log('@', currentNode)
