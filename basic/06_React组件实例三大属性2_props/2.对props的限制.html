@@ -42,15 +42,27 @@
         }
     }
 
-    Person.prototype = {
+    // 对标签属性进行类型、必要性的限制
+    Person.propTypes = {
         // name: React.Properties.string // React 16之前
-        name: PropTypes.string,
+        // 限制名字必须传指定且是字符串
+        name: PropTypes.string.isRequired,
+        // 限制年龄必须是数字
         age: PropTypes.number,
+        // 限制性别是字符串
+        sex: PropTypes.string,
+        // 限制speak传递的是函数类型，需要写func, 应为function为关键字
+        speak: PropTypes.func,
+    }
+    // 指定标签属性默认值
+    Person.defaultProps = {
+        sex: 'unknown',
+        age: 19,
     }
 
     // 2. 渲染组件到页面
-    ReactDOM.render(<Person name='alice1' sex='女' age='20'/>, document.getElementById('test1'));
-    ReactDOM.render(<Person name='alice2' sex='女' age='21'/>, document.getElementById('test2'));
+    ReactDOM.render(<Person name='alice1' sex='女' age={20} spkak={speak}/>, document.getElementById('test1'));
+    ReactDOM.render(<Person name='alice2' sex='女' age={21}/>, document.getElementById('test2'));
 
     const p = {name: 'alice...', sex: '女', age: 12}
     // 展开表达式不能展开一个对象, 但写在babel中的代码可以, 但也仅限写在标签中。 下行输出为空
@@ -60,6 +72,9 @@
     ReactDOM.render(<Person {...p}/>, document.getElementById('test3'));
 
 
+    function speak() {
+        console.log("speak");
+    }
 </script>
 </body>
 </html>
