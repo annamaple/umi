@@ -32,6 +32,8 @@
             console.log(this)
             // 解构赋值
             const {name, sex, age} = this.props;
+            // props是只读的 下行代码会报错
+            // this.props.name = 'jack'
             return (
                 <ul>
                     <li>姓名:{name}</li>
