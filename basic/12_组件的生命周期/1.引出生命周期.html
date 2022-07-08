@@ -25,34 +25,42 @@
 
 <script type="text/babel">
 
-    // 037
-    class Demo extends React.Component {
+    // 挂载(mount)
+    // 卸载(unmount)
+    // min 30
+    class Life extends React.Component {
 
-        myRef = React.createRef();
-        showData = () => {
-            alert(this.myRef.current.value)
-        }
-        showData2 = (event) => {
-            alert(event.target.value)
+        state = {opacity: 0.1}
+
+        death = () => {
+            // 卸载组件 unmount
+            ReactDOM.unmountComponentAtNode(document.getElementById('test'));
         }
 
+        // 调用时机: 组件挂载完毕之后
+        componentDidMount() {
+            setInterval(() => {
+                let {opacity} = this.state;
+                opacity -= 0.1
+                if (opacity < 0) opacity = 1
+                this.setState({opacity});
+            }, 200);
+        }
+
+        // 调用时机：初始化渲染、状态更新之后
         render() {
             return (
                 <div>
-                    <label>
-                        <input ref={this.myRef} type="text" placeholder='点击按钮提示数据'/>
-                    </label>
-                    <button onClick={this.showData}>点我提示左侧数据</button>
-                    <label>
-                        <input onBlur={this.showData2} type="text" placeholder='失去焦点提示数据'/>
-                    </label>
+                    <h2 style={{opacity: this.state.opacity}}>学不会怎么办?</h2>
+                    <button onClick={this.death}>放弃啊</button>
+                    <button onClick={this.action}>开始变化</button>
                 </div>
             )
         }
     }
 
     // 2. 渲染组件到页面
-    ReactDOM.render(<Demo/>, document.getElementById('test'));
+    ReactDOM.render(<Life/>, document.getElementById('test'));
 </script>
 </body>
 </html>
