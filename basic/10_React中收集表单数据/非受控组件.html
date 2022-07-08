@@ -25,40 +25,35 @@
 
 <script type="text/babel">
 
-    class Demo extends React.Component {
-        /* 
-         * 1. 通过onXXX属性指定事件处理函数（注意大小写）
-         *   a. React使用的是自定义（合成）事件，而不是原生DOM事件 —— 为了更好的兼容性
-         *   b. React中的事件是通过委托方式处理的（委托给组件最外层的元素）— 为了高效
-         * 2. 通过event.target得到发生事件的DOM元素对象.不要过度的使用ref
-         *
-         */
+    class Login extends React.Component {
 
-        myRef = React.createRef();
-        showData = () => {
-            alert(this.myRef.current.value)
-        }
-        showData2 = (event) => {
-            alert(event.target.value)
+        handleSubmit = (event) => {
+            // 阻止表单提交
+            event.preventDefault();
+            const {userName, password} = this;
+            alert(`userName: ${userName.value}; password: ${password.value}`);
         }
 
         render() {
             return (
                 <div>
-                    <label>
-                        <input ref={this.myRef} type="text" placeholder='点击按钮提示数据'/>
-                    </label>
-                    <button onClick={this.showData}>点我提示左侧数据</button>
-                    <label>
-                        <input onBlur={this.showData2} type="text" placeholder='失去焦点提示数据'/>
-                    </label>
+                    <form action="#" onSubmit={this.handleSubmit} >
+                        <label>姓名：
+                            <input ref={c => this.userName = c} name='username' type="text"/>
+                        </label>
+                        <label>
+                            密码：
+                            <input ref={c => this.password = c} name='password' type="password"/>
+                        </label>
+                        <button>提交</button>
+                    </form>
                 </div>
             )
         }
     }
 
     // 2. 渲染组件到页面
-    ReactDOM.render(<Demo/>, document.getElementById('test'));
+    ReactDOM.render(<Login/>, document.getElementById('test'));
 </script>
 </body>
 </html>
