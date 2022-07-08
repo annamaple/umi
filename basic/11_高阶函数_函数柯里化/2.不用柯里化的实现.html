@@ -53,11 +53,8 @@
             alert(`账号: ${username};密码: ${password}`);
         }
 
-        saveFormData = (dataType) => {
-            return (event) => {
-                console.log(event, dataType)
-                this.setState({[dataType]: event.target.value})
-            }
+        saveFormData = (dataType, event) => {
+            this.setState({[dataType]: event.target.value})
         }
 
         render() {
@@ -65,11 +62,13 @@
                 <div>
                     <form action="#" onSubmit={this.handleSubmit}>
                         <label>姓名：
-                            <input onChange={this.saveFormData('username')} name='username' type="text"/>
+                            <input onChange={(event) => this.saveFormData('username', event)} name='username'
+                                   type="text"/>
                         </label>
                         <label>
                             密码：
-                            <input onChange={this.saveFormData('password')} name='password' type="password"/>
+                            <input onChange={(event) => this.saveFormData('password', event)} name='password'
+                                   type="password"/>
                         </label>
                         <button>提交</button>
                     </form>
