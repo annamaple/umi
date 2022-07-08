@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React中的事件处理.html</title>
+    <!--引入React核心库 React-->
+    <script src="../../access/js/react.development.js"></script>
+    <!--引入React-dom， 用于支出react操作DOM ReactDOM-->
+    <script src="../../access/js/react-dom.development.js"></script>
+    <!--引入babel，用于将jsx转为js-->
+    <script src="../../access/js/babel.min.js"></script>
+    <!--引入prop-types, 用于对组件标签进行限制 PropTypes-->
+    <script src="../../access/js/prop-types.js"></script>
+    <style>
+        .title {
+            background-color: darkorange;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+
+<!--准备好一个容器-->
+<div id="test"></div>
+
+<script type="text/babel">
+
+    // 037
+    class Demo extends React.Component {
+
+        myRef = React.createRef();
+        showData = () => {
+            alert(this.myRef.current.value)
+        }
+        showData2 = (event) => {
+            alert(event.target.value)
+        }
+
+        render() {
+            return (
+                <div>
+                    <label>
+                        <input ref={this.myRef} type="text" placeholder='点击按钮提示数据'/>
+                    </label>
+                    <button onClick={this.showData}>点我提示左侧数据</button>
+                    <label>
+                        <input onBlur={this.showData2} type="text" placeholder='失去焦点提示数据'/>
+                    </label>
+                </div>
+            )
+        }
+    }
+
+    // 2. 渲染组件到页面
+    ReactDOM.render(<Demo/>, document.getElementById('test'));
+</script>
+</body>
+</html>
