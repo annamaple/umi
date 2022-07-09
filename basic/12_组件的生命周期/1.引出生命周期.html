@@ -32,14 +32,9 @@
 
         state = {opacity: 0.1}
 
-        death = () => {
-            // 卸载组件 unmount
-            ReactDOM.unmountComponentAtNode(document.getElementById('test'));
-        }
-
         // 调用时机: 组件挂载完毕之后
         componentDidMount() {
-            setInterval(() => {
+            this.timer = setInterval(() => {
                 let {opacity} = this.state;
                 opacity -= 0.1
                 if (opacity < 0) opacity = 1
@@ -47,13 +42,25 @@
             }, 200);
         }
 
+        // 组件将要卸载
+        componentWillUnmount() {
+            // 清楚定时器
+            clearInterval(this.timer)
+        }
+
+        death = () => {
+
+            // 卸载组件 unmount
+            ReactDOM.unmountComponentAtNode(document.getElementById('test'));
+        }
+
+
         // 调用时机：初始化渲染、状态更新之后
         render() {
             return (
                 <div>
                     <h2 style={{opacity: this.state.opacity}}>学不会怎么办?</h2>
                     <button onClick={this.death}>放弃啊</button>
-                    <button onClick={this.action}>开始变化</button>
                 </div>
             )
         }
