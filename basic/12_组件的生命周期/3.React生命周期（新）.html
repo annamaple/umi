@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3.React生命周期（新）.html</title>
+    <!--引入React核心库 React-->
+    <script src="../../access/js/react.development.js"></script>
+    <!--引入React-dom， 用于支出react操作DOM ReactDOM-->
+    <script src="../../access/js/react-dom.development.js"></script>
+    <!--引入babel，用于将jsx转为js-->
+    <script src="../../access/js/babel.min.js"></script>
+    <!--引入prop-types, 用于对组件标签进行限制 PropTypes-->
+    <script src="../../access/js/prop-types.js"></script>
+    <style>
+        .title {
+            background-color: darkorange;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+
+<!--准备好一个容器-->
+<div id="test"></div>
+
+<script type="text/babel">
+
+    class Count extends React.Component {
+
+        constructor(props) {
+            console.log("Count---constructor")
+            super(props);
+        }
+
+        state = {count: 0}
+
+        add = () => {
+            let {count} = this.state;
+            count++;
+            this.setState({count});
+        }
+
+        // 销毁按钮的回调
+        death = () => {
+            ReactDOM.unmountComponentAtNode(document.getElementById("test"))
+        }
+
+        // 强制更新按钮的回调
+        force = () => {
+            this.forceUpdate();
+        }
+
+        // 组件将要挂载的钩子
+        componentWillMount() {
+            console.log("Count---componentWillMount")
+        }
+
+        // 组件挂载完毕的钩子
+        componentDidMount() {
+            console.log("Count---componentDidMount")
+        }
+
+        // 組件將要卸载的钩子
+        componentWillUnmount() {
+            console.log("Count---componentWillUnmount")
+        }
+
+        // 控制组件更新的“阀门”
+        shouldComponentUpdate() {
+            console.log("Count---shouldComponentUpdate")
+            return true
+        }
+
+        // 组件将要更新的钩子
+        componentWillUpdate() {
+            console.log("Count---componentWillUpdate")
+        }
+
+        // 组件更新完毕的钩子
+        componentDidUpdate() {
+            console.log("Count---componentDidUpdate")
+        }
+
+        render() {
+            console.log("Count---render")
+            const {count} = this.state;
+            return (
+                <div>
+                    <h2>当前数字为: {count}</h2>
+                    <button onClick={this.add}>点我+1</button>
+                    <button onClick={this.death}>点我销毁</button>
+                    <button onClick={this.force}>不更改任何状态中的数据, 强制更新一下</button>
+                </div>
+            )
+        }
+    }
+
+    // 父组件A
+    class A extends React.Component {
+
+        changeCar = () => {
+            let {carName} = this.state;
+            if (carName === '奥拓') {
+                this.setState({carName: '奔驰'})
+            } else {
+                this.setState({carName: '奥拓'})
+            }
+        }
+
+        // 初始化状态
+        state = {carName: '奔驰'}
+
+        render() {
+            const {carName} = this.state;
+            return (
+                <div>
+                    <div>我是A组件</div>
+                    <button onClick={this.changeCar}>换车</button>
+                    <B carName={carName}/>
+                </div>
+            )
+        }
+    }
+
+    // 子组件B
+    class B extends React.Component {
+
+        // 组件将要接收新的props
+        componentWillReceiveProps(props) {
+            console.log("B - componentWillReceiveProps ", props)
+        }
+
+        // 控制组件更新的阀门
+        shouldComponentUpdate() {
+            console.log("B - shouldComponentUpdate ")
+            return true;
+        }
+
+        // 组件将要更新
+        componentWillUpdate() {
+            console.log("B - componentWillUpdate ")
+        }
+
+        // 组件完成更新
+        componentDidUpdate() {
+            console.log("B - componentDidUpdate")
+        }
+
+        render() {
+            console.log("B - render")
+            const {carName} = this.props;
+            return (
+                <div> 我是B组件, 接收到的车是：{carName}</div>
+            )
+        }
+    }
+
+    // 2. 渲染组件到页面
+    ReactDOM.render(<A/>, document.getElementById('test'));
+</script>
+</body>
+</html>
