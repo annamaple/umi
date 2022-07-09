@@ -95,8 +95,63 @@
         }
     }
 
+    class A extends React.Component {
+
+        changeCar = () => {
+            let {carName} = this.state;
+            if (carName === '奥拓') {
+                this.setState({carName: '奔驰'})
+            } else {
+                this.setState({carName: '奥拓'})
+            }
+        }
+
+        // 初始化状态
+        state = {carName: '奔驰'}
+
+        render() {
+            const {carName} = this.state;
+            return (
+                <div>
+                    <div>我是A组件</div>
+                    <button onClick={this.changeCar}>换车</button>
+                    <B carName={carName}/>
+                </div>
+            )
+        }
+    }
+
+    class B extends React.Component {
+
+        // 组件将要接收新的props
+        componentWillReceiveProps(props) {
+            console.log("B - componentWillReceiveProps ", props)
+        }
+        // 控制组件更新的阀门
+        shouldComponentUpdate() {
+            console.log("B - shouldComponentUpdate ")
+            return true;
+        }
+        // 组件将要更新
+        componentWillUpdate() {
+            console.log("B - componentWillUpdate ")
+        }
+        // 组件完成更新
+        componentDidUpdate() {
+            console.log("B - componentDidUpdate")
+        }
+
+        render() {
+            console.log("B - render")
+            const {carName} = this.props;
+            return (
+                <div> 我是B组件, 接收到的车是：{carName}</div>
+            )
+        }
+    }
+
     // 2. 渲染组件到页面
-    ReactDOM.render(<Count/>, document.getElementById('test'));
+    ReactDOM.render(<A/>, document.getElementById('test'));
 </script>
 </body>
 </html>
