@@ -57,7 +57,7 @@
         // 从props中获取衍生状态：用处罕见：即state中的值任何时候都取决于props可以使用。副作用：使代码冗余
         static getDerivedStateFromProps(props, state) {
             console.log("Count---getDerivedStateFromProps", props, state)
-            return {count1: 108};
+            return null;
         }
 
         // 组件挂载完毕的钩子
@@ -76,9 +76,15 @@
             return true
         }
 
+        getSnapshotBeforeUpdate(props, state) {
+            console.log("Count---getSnapshotBeforeUpdate", props, state)
+            return "anna";
+        }
+
+
         // 组件更新完毕的钩子
-        componentDidUpdate() {
-            console.log("Count---componentDidUpdate")
+        componentDidUpdate(preProps, preState, snapshotValue) {
+            console.log("Count---componentDidUpdate", preProps, preState, snapshotValue)
         }
 
         render() {
