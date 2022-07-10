@@ -25,6 +25,10 @@
 
 <script type="text/babel">
 
+    /**
+     * 新生命周期——废弃三个will钩子，新增两个get钩子
+     */
+
     class Count extends React.Component {
 
         constructor(props) {
@@ -51,7 +55,7 @@
         }
 
         // 组件将要挂载的钩子
-        componentWillMount() {
+        UNSAFE_componentWillMount() {
             console.log("Count---componentWillMount")
         }
 
@@ -72,7 +76,7 @@
         }
 
         // 组件将要更新的钩子
-        componentWillUpdate() {
+        UNSAFE_componentWillUpdate() {
             console.log("Count---componentWillUpdate")
         }
 
@@ -126,24 +130,8 @@
     class B extends React.Component {
 
         // 组件将要接收新的props
-        componentWillReceiveProps(props) {
+        UNSAFE_componentWillReceiveProps(props) {
             console.log("B - componentWillReceiveProps ", props)
-        }
-
-        // 控制组件更新的阀门
-        shouldComponentUpdate() {
-            console.log("B - shouldComponentUpdate ")
-            return true;
-        }
-
-        // 组件将要更新
-        componentWillUpdate() {
-            console.log("B - componentWillUpdate ")
-        }
-
-        // 组件完成更新
-        componentDidUpdate() {
-            console.log("B - componentDidUpdate")
         }
 
         render() {
