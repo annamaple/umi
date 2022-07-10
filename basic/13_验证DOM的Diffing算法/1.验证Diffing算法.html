@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1.验证Diffing算法.html</title>
+    <!--引入React核心库 React-->
+    <script src="../../access/js/react.development.js"></script>
+    <!--引入React-dom， 用于支出react操作DOM ReactDOM-->
+    <script src="../../access/js/react-dom.development.js"></script>
+    <!--引入babel，用于将jsx转为js-->
+    <script src="../../access/js/babel.min.js"></script>
+    <!--引入prop-types, 用于对组件标签进行限制 PropTypes-->
+    <script src="../../access/js/prop-types.js"></script>
+    <style>
+    </style>
+</head>
+<body>
+
+<!--准备好一个容器-->
+<div id="test"></div>
+
+<script type="text/babel">
+
+    class Time extends React.Component {
+
+        state = {time: new Date()}
+
+        componentDidMount() {
+            setInterval(() => {
+                const time = new Date();
+                this.setState({time});
+            }, 1000)
+        }
+
+        render() {
+
+            // 如下，该组件的事件一直在更新，在输入框中的数据不会丢失
+            return (
+                <div>
+                    <h1>Hello, {this.props.name}</h1>
+                    <label>
+                        <input type="text"/>
+                    </label>
+                    <span>现在是：{this.state.time.toTimeString()}
+                        <label>
+                        <input type="text"/>
+                        </label>
+                    </span>
+                </div>
+            )
+        }
+    }
+
+    // 挂载
+    ReactDOM.render(<Time name='Anna'/>, document.getElementById("test"))
+</script>
+</body>
+</html>
