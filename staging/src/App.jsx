@@ -43,7 +43,7 @@ class App extends Component {
         items.forEach((item, i) => {
             item.done = done;
         });
-        this.setState({items})
+        this.setState({items});
     }
 
     clearAllDone = () => {
@@ -65,7 +65,11 @@ class App extends Component {
                     delItem={this.delItem}
                     modifyItemState={this.modifyItemState}
                     />
-                    <Footer/>
+                    <Footer
+                        items={this.state.items}
+                        clearAllDone={this.clearAllDone}
+                        checkAllItem={this.checkAllItem}
+                    />
                 </div>
             </div>
         );
