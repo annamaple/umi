@@ -1,13 +1,18 @@
 import React, {Component} from 'react';
+import Item from "../Item";
+import './index.css'
 
-class Index extends Component {
+class List extends Component {
     render() {
         return (
-            <div>
-
-            </div>
+            <ul className='todo-main'>
+                <Item/>
+                <Item/>
+                <Item/>
+                <Item/>
+            </ul>
         );
     }
 }
 
-export default Index;
+export default List;

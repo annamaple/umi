@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
-import css from './index.module.css'
+import './index.css'
 
-class Index extends Component {
+class Header extends Component {
     render() {
         return (
-            <div className={css.title}>
-
+            <div className='todo-header'>
+                <input type="text" placeholder='please input your todo item and press enter to confirm'/>
             </div>
         );
     }
 }
 
-export default Index;
+export default Header;

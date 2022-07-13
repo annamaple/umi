@@ -1,13 +1,18 @@
 import React, {Component} from 'react';
+import './index.css'
 
-class Index extends Component {
+class Item extends Component {
     render() {
         return (
-            <div>
-
-            </div>
+            <li>
+                <label htmlFor="">
+                    <input type="checkbox"/>
+                    <span>anna</span>
+                </label>
+                <button className='btn btn-danger'>点我</button>
+            </li>
         );
     }
 }
 
-export default Index;
+export default Item;
