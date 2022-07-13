@@ -17,7 +17,7 @@ class App extends Component {
 
     addItem = (item) => {
         const {items} = this.state;
-        items.push(items);
+        items.unshift(item);
         this.setState({items});
     }
 
@@ -59,7 +59,7 @@ class App extends Component {
         return (
             <div className='todo-container'>
                 <div className='todo-wrap'>
-                    <Header add={this.addItem}/>
+                    <Header addItem={this.addItem}/>
                     <List/>
                     <Footer/>
                 </div>
