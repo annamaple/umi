@@ -60,7 +60,11 @@ class App extends Component {
             <div className='todo-container'>
                 <div className='todo-wrap'>
                     <Header addItem={this.addItem}/>
-                    <List/>
+                    <List
+                    items={this.state.items}
+                    delItem={this.delItem}
+                    modifyItemState={this.modifyItemState}
+                    />
                     <Footer/>
                 </div>
             </div>

@@ -4,12 +4,14 @@ import './index.css'
 
 class List extends Component {
     render() {
+        const {items, modifyItemState, delItem} = this.props;
         return (
             <ul className='todo-main'>
-                <Item/>
-                <Item/>
-                <Item/>
-                <Item/>
+                {
+                    items.map(item => {
+                        return <Item key={item.id} item={item} modifyItemState={modifyItemState} delItem={delItem}/>
+                    })
+                }
             </ul>
         );
     }
