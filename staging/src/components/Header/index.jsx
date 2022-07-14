@@ -16,6 +16,7 @@ class Header extends Component {
         if (key === 'Enter') {
             if(value === '') {
                 alert('事项为空');
+                return;
             }
             const item = {id: nanoid(), name: value, done: false};
             addItem(item);
