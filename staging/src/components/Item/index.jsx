@@ -22,6 +22,7 @@ class Item extends Component {
         }
     }
 
+    // 勾选与取消勾选的回调
     handleCheck = (item) => {
         const {modifyItemState} = this.props;
         return () => {
@@ -29,6 +30,7 @@ class Item extends Component {
         }
     }
 
+    // 鼠标移入移出的回调
     handleMouse = (mouseFlag) => {
         return () => {
             this.setState({mouseFlag})
