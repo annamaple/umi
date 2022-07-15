@@ -15,7 +15,7 @@ class Header extends Component {
         const value = e.target.value.trim();
         const {addItem} = this.props;
         if (key === 'Enter') {
-            if (value === '')
+            if (value === '') {
                 // 事项为空不处理
                 return;
             }
