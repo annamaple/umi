@@ -21,7 +21,7 @@ class Footer extends Component {
     render() {
         const {items, clearAllDone} = this.props;
         let doneCount = items.reduce((pre, item) => pre + (item.done ? 1 : 0), 0);
-        let checked = items.length > 0 ? true : false;
+        let checked = items.length > 0;
         items.forEach((item, i) => {
             if (!item.done) {
                 checked = false;

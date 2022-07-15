@@ -18,16 +18,16 @@ class App extends Component {
     // 状态在哪儿操作状态的方法就在哪儿
     // 用于添加一个Item
     addItem = (item) => {
-        if(!item) {
+        if (!item) {
             alert(`item is undefined or null`);
         }
-        if(!item.id) {
+        if (!item.id) {
             alert(`item.id is undefined or null`);
         }
-        if(!item.name) {
+        if (!item.name) {
             alert(`item.name is undefined or null`);
         }
-        if(item.done === 'undefined' || item.done === null) {
+        if (item.done === 'undefined' || item.done === null) {
             alert(`item.done is undefined or null`);
         }
         const {items} = this.state;
@@ -61,11 +61,13 @@ class App extends Component {
     }
 
     clearAllDone = () => {
-        const {items} = this.state;
-        const newItems = items.filter(item => {
-            return !item.done;
-        })
-        this.setState({items: newItems});
+        if (window.confirm('Are you sure delete all items? ')) {
+            const {items} = this.state;
+            const newItems = items.filter(item => {
+                return !item.done;
+            })
+            this.setState({items: newItems});
+        }
     }
 
 
