@@ -15,6 +15,7 @@ class App extends Component {
         ],
     }
 
+    // 状态在哪儿操作状态的方法就在哪儿
     // 用于添加一个Item
     addItem = (item) => {
         if(!item) {

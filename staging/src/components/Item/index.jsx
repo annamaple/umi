@@ -18,7 +18,9 @@ class Item extends Component {
     handleClick = (item) => {
         const {delItem} = this.props;
         return () => {
-            delItem(item.id);
+            if(window.confirm("Are you sure delete?")) {
+                delItem(item.id);
+            }
         }
     }
 
