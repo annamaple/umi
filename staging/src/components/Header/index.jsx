@@ -9,13 +9,14 @@ class Header extends Component {
         addItem: PropTypes.func.isRequired,
     }
 
+    // 处理键盘的回调事件
     handleKeyUp = (e) => {
         const {key, target} = e;
         const value = e.target.value.trim();
         const {addItem} = this.props;
         if (key === 'Enter') {
-            if (value === '') {
-                alert('事项为空');
+            if (value === '')
+                // 事项为空不处理
                 return;
             }
             const item = {id: nanoid(), name: value, done: false};

@@ -15,7 +15,20 @@ class App extends Component {
         ],
     }
 
+    // 用于添加一个Item
     addItem = (item) => {
+        if(!item) {
+            alert(`item is undefined or null`);
+        }
+        if(!item.id) {
+            alert(`item.id is undefined or null`);
+        }
+        if(!item.name) {
+            alert(`item.name is undefined or null`);
+        }
+        if(item.done === 'undefined' || item.done === null) {
+            alert(`item.done is undefined or null`);
+        }
         const {items} = this.state;
         items.unshift(item);
         this.setState({items});
