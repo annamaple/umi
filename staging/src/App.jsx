@@ -8,10 +8,10 @@ class App extends Component {
 
     state = {
         items: [
-            {id: '001', name: '听歌', done: true},
-            {id: '002', name: '看电视', done: false},
-            {id: '003', name: '摄影', done: true},
-            {id: '004', name: '读小说', done: false},
+            {id: '001', name: 'Listen Music', done: true},
+            {id: '002', name: 'Watch Televion', done: false},
+            {id: '003', name: 'Take Photos', done: true},
+            {id: '004', name: 'Reading', done: false},
         ],
     }
 
