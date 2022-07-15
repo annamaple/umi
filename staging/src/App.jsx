@@ -31,11 +31,11 @@ class App extends Component {
 
     modifyItemState = (id, done) => {
         const {items} = this.state;
-        const newItems = items.map((item)=>{
-			if(item.id === id) return {...item,done}
-			else return item
-		})
-		this.setState({items:newItems})
+        const newItems = items.map((item) => {
+            if (item.id === id) return {...item, done}
+            else return item
+        })
+        this.setState({items: newItems})
     }
 
     checkAllItem = (done) => {
@@ -61,9 +61,9 @@ class App extends Component {
                 <div className='todo-wrap'>
                     <Header addItem={this.addItem}/>
                     <List
-                    items={this.state.items}
-                    delItem={this.delItem}
-                    modifyItemState={this.modifyItemState}
+                        items={this.state.items}
+                        delItem={this.delItem}
+                        modifyItemState={this.modifyItemState}
                     />
                     <Footer
                         items={this.state.items}

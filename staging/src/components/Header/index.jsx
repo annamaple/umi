@@ -14,7 +14,7 @@ class Header extends Component {
         const value = e.target.value.trim();
         const {addItem} = this.props;
         if (key === 'Enter') {
-            if(value === '') {
+            if (value === '') {
                 alert('事项为空');
                 return;
             }
@@ -29,9 +29,9 @@ class Header extends Component {
         return (
             <div className='todo-header'>
                 <input
-                type="text"
-                placeholder='please input your todo item and press enter to confirm'
-                onKeyUp={this.handleKeyUp}
+                    type="text"
+                    placeholder='please input your todo item and press enter to confirm'
+                    onKeyUp={this.handleKeyUp}
                 />
             </div>
         );

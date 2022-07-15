@@ -30,9 +30,9 @@ class Footer extends Component {
 
         return (
             <div className='todo-footer'>
-                <label htmlFor="" >
+                <label htmlFor="">
                     <input type="checkbox" checked={checked} onChange={this.handleCheck()}/>
-                    {checked? '取消全选' : '选择全部'}
+                    {checked ? '取消全选' : '选择全部'}
                 </label>
                 <span>
 					<span>已完成 {doneCount}</span> / 全部 {items.length}
