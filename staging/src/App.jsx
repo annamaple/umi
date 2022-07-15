@@ -61,7 +61,7 @@ class App extends Component {
     }
 
     clearAllDone = () => {
-        if (window.confirm('Are you sure delete all items? ')) {
+        if (window.confirm('Are you sure delete all done items? ')) {
             const {items} = this.state;
             const newItems = items.filter(item => {
                 return !item.done;
