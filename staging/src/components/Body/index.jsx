@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
-import {Typography, Card} from 'antd';
+import {Typography, Card, Image} from 'antd';
+import './index.css'
 
 const {Meta} = Card;
 
@@ -32,12 +33,13 @@ class Index extends Component {
         const {login, html_url, avatar_url} = user;
         return (
             <Card
+                className='card'
                 key={login}
                 hoverable
                 style={{
                     width: 240,
                 }}
-                cover={<img alt={login} src={avatar_url}/>}
+                cover={<Image preview={false} alt={login} src={avatar_url}/>}
             >
                 <Meta title={login} description={html_url}/>
             </Card>
@@ -48,7 +50,7 @@ class Index extends Component {
         const {users, isFirst, isSearch, errorMessage} = this.props;
         return (
             <div
-                style={{display: 'flex'}}
+                className='cards'
             >
                 {isFirst ? this.getTypography('please input username to search') :
                     isSearch ? this.getTypography('searching...') :
