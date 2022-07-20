@@ -31,7 +31,11 @@ class Index extends Component {
 
     render() {
         return (
-            <div>
+            <div
+                style={{
+                    textAlign: "center",
+                }}
+            >
                 <Search
                     placeholder="input search text"
                     allowClear

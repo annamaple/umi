@@ -21,7 +21,7 @@ class Index extends Component {
                 level={2}
                 style={{
                     marginTop: 20,
-                    marginLeft: 0,
+                    width: window.innerWidth * 0.5,
                 }}
             >
                 {content}
