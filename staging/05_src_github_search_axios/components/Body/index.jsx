@@ -1,29 +1,17 @@
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
 import {Typography, Card, Image} from 'antd';
-import PubSub from 'pubsub-js';
 import './index.css'
 
 const {Meta} = Card;
 
 class Index extends Component {
 
-    state = {
-        isFirst: true,
-        isSearch: false,
-        users: [],
-        errorMessage: '',
-    }
-
-    componentDidMount() {
-        this.headerToken = PubSub.subscribe('header', (_, data) => {
-            console.log("Body--", data);
-            this.setState(data);
-        })
-    }
-
-    componentWillUnmount() {
-        PubSub.unsubscribe(this.headerToken);
+    static propTypes = {
+        users: PropTypes.array.isRequired,
+        isFirst: PropTypes.bool,
+        isSearch: PropTypes.bool,
+        errorMessage: PropTypes.string,
     }
 
     getTypography = (content) => {
@@ -59,7 +47,7 @@ class Index extends Component {
     }
 
     render() {
-        const {users, isFirst, isSearch, errorMessage} = this.state;
+        const {users, isFirst, isSearch, errorMessage} = this.props;
         return (
             <div
                 className='cards'

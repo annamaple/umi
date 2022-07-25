@@ -7,10 +7,11 @@ class App extends Component {
 
 
     render() {
+        const {updateState} = this;
         return (
             <div>
-                <Header/>
-                <Body/>
+                <Header updateAppState={updateState}/>
+                <Body {...this.state}/>
             </div>
         );
     }
