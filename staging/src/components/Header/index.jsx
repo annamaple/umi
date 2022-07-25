@@ -8,22 +8,25 @@ const {Search} = Input;
 class Index extends Component {
 
     static propTypes = {
-        updateState: PropTypes.func.isRequired,
+        updateAppState: PropTypes.func.isRequired,
     }
 
     onSearch = (value) => {
-        const {updateState} = this.props;
-        updateState({isSearch: true, isFirst: false});
+        const {updateAppState} = this.props;
+        // 发送请求前, 更新状态
+        updateAppState({isSearch: true, isFirst: false});
         if (value) {
             console.log(value);
             axios.get(`https://api.github.com/search/users?q=${value}`).then(
                 response => {
                     console.log(response.data.items);
-                    updateState({users: response.data.items, isSearch: false});
+                    // 请求成功后更新状态
+                    updateAppState({users: response.data.items, isSearch: false});
                 },
                 error => {
                     console.log(error);
-                    updateState({errorMessage: error.message, isSearch: false});
+                    // 请求失败后通知app更新状态
+                    updateAppState({errorMessage: error.message, isSearch: false});
                 }
             )
         }

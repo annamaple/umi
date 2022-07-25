@@ -20,7 +20,7 @@ class App extends Component {
         const {updateState} = this;
         return (
             <div>
-                <Header updateState={updateState}/>
+                <Header updateAppState={updateState}/>
                 <Body {...this.state}/>
             </div>
         );
