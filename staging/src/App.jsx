@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link, Route} from 'react-router-dom';
+import {Link, BrowserRouter, Route} from 'react-router-dom';
 import About from './components/About';
 import Home from './components/Home';
 
@@ -31,8 +31,8 @@ class App extends Component {
                         <div className="panel">
                             <div className="panel-body">
                                 {/* 注册路由 */}
-                                <Route path="/about" component={About}/>
                                 <Route path="/home" component={Home}/>
+                                <Route path="/about" component={About}/>
                             </div>
                         </div>
                     </div>
