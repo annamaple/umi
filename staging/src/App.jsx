@@ -4,7 +4,8 @@ import {NavLink, Route} from 'react-router-dom';
 import About from './pages/About';
 import Home from './pages/Home';
 // 一般组件
-import Header from './components/Header'
+import Header from './components/Header';
+import MyNavLink from './components/MyNavLink';
 import './App.css'
 
 class App extends Component {
@@ -23,8 +24,10 @@ class App extends Component {
 							<a className="list-group-item active" href="./home.html">Home</a> */}
 
                             {/* 在React中靠路由链接实现切换组件--编写路由链接 */}
-                            <NavLink activeClassName='xl' className="list-group-item" to="/about">About</NavLink>
-                            <NavLink activeClassName='xl' className="list-group-item" to="/home">Home</NavLink>
+                            {/*<NavLink activeClassName='xl' className="list-group-item" to="/about">About</NavLink>*/}
+                            {/*<NavLink activeClassName='xl' className="list-group-item" to="/home">Home</NavLink>*/}
+                            <MyNavLink to='/home'>Home</MyNavLink>
+                            <MyNavLink to='/about'>About</MyNavLink>
                         </div>
                     </div>
                     <div className="col-xs-6">
