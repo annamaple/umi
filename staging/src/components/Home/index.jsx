@@ -1,6 +1,13 @@
+import React, {Component} from 'react';
 
-export default function render() {
-    return (
-        <div>我是Home</div>
-    )
+class Index extends Component {
+    render() {
+        return (
+            <div>
+                Home
+            </div>
+        );
+    }
 }
+
+export default Index;
