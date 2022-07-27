@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {NavLink, Route} from 'react-router-dom';
+import {Redirect, Route, Switch} from 'react-router-dom';
 // 路由组件
 import About from './pages/About';
 import Home from './pages/Home';
@@ -26,16 +26,19 @@ class App extends Component {
                             {/* 在React中靠路由链接实现切换组件--编写路由链接 */}
                             {/*<NavLink activeClassName='xl' className="list-group-item" to="/about">About</NavLink>*/}
                             {/*<NavLink activeClassName='xl' className="list-group-item" to="/home">Home</NavLink>*/}
-                            <MyNavLink to='/home'>Home</MyNavLink>
                             <MyNavLink to='/about'>About</MyNavLink>
+                            <MyNavLink to='/home'>Home</MyNavLink>
                         </div>
                     </div>
                     <div className="col-xs-6">
                         <div className="panel">
                             <div className="panel-body">
                                 {/* 注册路由 */}
-                                <Route path="/home" component={Home}/>
-                                <Route path="/about" component={About}/>
+                                <Switch>
+                                    <Route path="/home" component={Home}/>
+                                    <Route path="/about" component={About}/>
+                                    <Redirect to='about'/>
+                                </Switch>
                             </div>
                         </div>
                     </div>
