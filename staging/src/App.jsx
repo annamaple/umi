@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {NavLink, Route} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 // 路由组件
 import About from './pages/About';
 import Home from './pages/Home';
