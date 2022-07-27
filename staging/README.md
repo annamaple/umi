@@ -65,6 +65,8 @@
 
 ## 五、NavLink与封装NavLink
 				1.NavLink可以实现路由链接的高亮，通过activeClassName指定样式名
+                2.标签体内容是一个特殊的标签属性
+                3.可以通过this.props.children可以获取标签体内容
 
 ## 六、Switch的使用
 				1.通常情况下，path和component是一一对应的关系。
