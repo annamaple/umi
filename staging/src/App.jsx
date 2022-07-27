@@ -3,7 +3,6 @@ import {Route, Switch} from 'react-router-dom';
 // 路由组件
 import About from './pages/About';
 import Home from './pages/Home';
-import Test from './pages/Test';
 // 一般组件
 import Header from './components/Header';
 import MyNavLink from './components/MyNavLink';
@@ -38,7 +37,6 @@ class App extends Component {
                                 <Switch>
                                     <Route path="/about" component={About}/>
                                     <Route path="/home" component={Home}/>
-                                    <Route path='/home' component={Test}/>
                                 </Switch>
                             </div>
                         </div>
