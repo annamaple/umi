@@ -19,7 +19,7 @@ class Index extends Component {
     render() {
         console.log('detail', this.props);
         // 接受param参数
-        // const {id, title} = this.props.match.params;
+        const {id, title} = this.props.match.params || {};
 
         // 接受search参数
         // const {search} = this.props.location;
@@ -28,7 +28,7 @@ class Index extends Component {
         // const {id, title} = qs.parse(search.slice(1));
 
         // 接受state参数
-        const {id, title} = this.props.location.state || {};
+        // const {id, title} = this.props.location.state || {};
         return (
             <div>
                 <ul>
