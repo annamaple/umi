@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import qs from 'querystring';
 
 class Index extends Component {
 
@@ -9,6 +10,9 @@ class Index extends Component {
     ]
 
     getDetailInfo = (id) => {
+        if (!id) {
+            return '';
+        }
         const {contentArr} = this;
         return contentArr.find(content => content.id === id).content;
     }
@@ -16,7 +20,12 @@ class Index extends Component {
     render() {
         console.log('detail', this.props);
         // 接受param参数
-        const {id, title} = this.props.match.params;
+        // const {id, title} = this.props.match.params;
+
+        // 接受search参数
+        const {search} = this.props.location;
+        // console.log(search, qs.parse(search.slice(1)));
+        const {id, title} = qs.parse(search.slice(1));
         return (
             <div>
                 <ul>

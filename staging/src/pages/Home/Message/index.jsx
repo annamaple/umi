@@ -29,13 +29,23 @@ class Index extends Component {
                         messageArr.map(message =>
                             <li key={message.id}>
                                 {/*向路由组件传递params参数*/}
-                                <Link to={`/home/message/detail/${message.id}/${message.title}`}>{message.title}</Link>
+                                {/*<Link to={`/home/message/detail/${message.id}/${message.title}`}>{message.title}</Link>*/}
+
+                                {/*向路由组件传递search参数*/}
+                                <Link
+                                    to={`/home/message/detail/?id=${message.id}&title=${message.title}`}
+                                >
+                                    {message.title}
+                                </Link>
                             </li>)
                     }
                 </ul>
                 <hr/>
                 {/*声明接受param参数*/}
-                <Route path='/home/message/detail/:id/:title' component={Detail}/>
+                {/*<Route path='/home/message/detail/:id/:title' component={Detail}/>*/}
+
+                {/*search参数无需声明接受*/}
+                <Route path='/home/message/detail' component={Detail}/>
             </div>
         );
     }
