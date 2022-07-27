@@ -40,10 +40,11 @@ class Index extends Component {
 
                                 {/*向组件中传递state参数*/}
                                 <Link
+                                    replace
                                     to={{
-                                    pathname: '/home/message/detail',
-                                    state: {...message},
-                                }}
+                                        pathname: '/home/message/detail',
+                                        state: {...message},
+                                    }}
                                 >
                                     {message.title}
                                 </Link>
