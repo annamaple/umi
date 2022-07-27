@@ -32,8 +32,18 @@ class Index extends Component {
                                 {/*<Link to={`/home/message/detail/${message.id}/${message.title}`}>{message.title}</Link>*/}
 
                                 {/*向路由组件传递search参数*/}
+                                {/*<Link*/}
+                                {/*    to={`/home/message/detail/?id=${message.id}&title=${message.title}`}*/}
+                                {/*>*/}
+                                {/*    {message.title}*/}
+                                {/*</Link>*/}
+
+                                {/*向组件中传递state参数*/}
                                 <Link
-                                    to={`/home/message/detail/?id=${message.id}&title=${message.title}`}
+                                    to={{
+                                    pathname: '/home/message/detail',
+                                    state: {...message},
+                                }}
                                 >
                                     {message.title}
                                 </Link>
@@ -45,7 +55,10 @@ class Index extends Component {
                 {/*<Route path='/home/message/detail/:id/:title' component={Detail}/>*/}
 
                 {/*search参数无需声明接受*/}
-                <Route path='/home/message/detail' component={Detail}/>
+                {/*<Route path='/home/message/detail' component={Detail}/>*/}
+
+                {/*state参数无需声明接受，正常注册即可*/}
+                <Route path={'/home/message/detail'} component={Detail}/>
             </div>
         );
     }
