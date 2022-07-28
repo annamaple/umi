@@ -92,24 +92,8 @@ class Index extends Component {
                 {/*state参数无需声明接受，正常注册即可*/}
                 {/*<Route path={'/home/message/detail'} component={Detail}/>*/}
 
-                <button onClick={this.back}>后退</button>
-                <button onClick={this.forward}>前进</button>
-                <button onClick={this.forward}>go</button>
             </div>
         );
-    }
-
-    back = () => {
-        this.props.history.goBack();
-    }
-
-    forward = () => {
-        this.props.history.goForward();
-    }
-
-    go = () => {
-        // 正表示前进 负数表示后退 数值表示几步
-        this.props.history.go(2);
     }
 }
 
