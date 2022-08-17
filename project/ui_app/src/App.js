@@ -1,40 +1,28 @@
+import { useState } from 'react';
+import { MantineProvider, ColorSchemeProvider, ColorScheme } from '@mantine/core';
 import MyNavLink from './components/MyNavLink';
 import Header from './components/Header';
 import './App.css';
 
-import React, {Component} from 'react';
-import {IconActivity, IconFingerprint, IconGauge} from "@tabler/icons";
+function App() {
 
-class App extends Component {
+  const [colorScheme, setColorScheme] = useState < ColorScheme > ('light');
+  const toggleColorScheme = (value
+      ? : ColorScheme
+  )
+=>
+  setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
 
-  state = {
-    data: [
-      {
-        icon: IconGauge,
-        label: 'Dashboard',
-        // description: 'Item with description'
-      },
-      {
-        icon: IconFingerprint,
-        label: 'Security',
-        // rightSection: <IconChevronRight size={14} stroke={1.5}/>,
-      },
-      {
-        icon: IconActivity,
-        label: 'Activity'
-      },
-    ],
-    activeIndex: 2,
-  };
-
-  render() {
-    return (
-      <div className="App">
-        <Header/>
-        <MyNavLink {...this.state}/>
-      </div>
-    );
-  }
+  return (
+    <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
+      <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
+        <div className="App">
+          <Header/>
+          <MyNavLink/>
+        </div>
+      </MantineProvider>
+    </ColorSchemeProvider>
+  );
 }
 
 export default App;
