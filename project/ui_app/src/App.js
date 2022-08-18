@@ -6,12 +6,10 @@ import './App.css';
 
 function App() {
 
-  const [colorScheme, setColorScheme] = useState < ColorScheme > ('light');
-  const toggleColorScheme = (value
-      ? : ColorScheme
-  )
-=>
-  setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
+  const [colorScheme, setColorScheme] = useState('light');
+  const toggleColorScheme = (colorScheme) => {
+    setColorScheme(colorScheme === 'dark' ? 'light' : 'dark')
+  };
 
   return (
     <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
